@@ -1,0 +1,2 @@
+# carla-api file. Can copy from carla docker container. Should end with *-py2.7-linux-x86_64.egg
+carla-api/*

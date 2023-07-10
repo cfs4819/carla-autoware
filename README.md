@@ -4,7 +4,7 @@ The carla autoware bridge is now hosted and maintained [here](https://github.com
 
 This repository contains a demonstrator of an autoware agent ready to be executed with CARLA.
 
-**The carla autoware integration requires CARLA 0.9.11. You can download it from [here](https://github.com/carla-simulator/carla/releases/tag/0.9.11)**
+**The carla autoware integration requires CARLA 0.9.13. You can download it from [here](https://github.com/carla-simulator/carla/releases/tag/0.9.11)**
 
 ## CARLA autoware agent
 The autoware agent is provided as a ROS package. All the configuration can be found inside the `carla-autoware-agent` folder.

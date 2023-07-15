@@ -26,6 +26,15 @@
   <arg name='use_ground_truth_detections' default='false'/>
   <arg name='use_manual_control' default='false'/>
 
+  <arg name="filename" default=""/>
+
+  <!--
+    ############
+    ## ROSBAG ##
+    ############
+  -->
+  <node name="recorder_bag" pkg="rosbag" type="record" args="-a -b 0 -x '/carla/ego_vehicle/rgb_*' --lz4 -O /tmp/fuzzerdata/$(arg filename)bagfile.lz4" />
+
   <!--
     ###########################
     ## CARLA Autoware bridge ##
@@ -34,7 +43,7 @@
   <include file='$(find carla_autoware_bridge)/launch/carla_autoware_bridge.launch'>
     <arg name='host' value='$(arg host)'/>
     <arg name='port' value='$(arg port)'/>
-    <arg name='town' value='$(arg town)'/>
+    <arg name='town' value='Carla/Maps/$(arg town)'/>
     <arg name='vehicle_filter' value='$(arg vehicle_model)'/>
     <arg name='role_name' value='$(arg role_name)'/>
     <arg name='spawn_point' value='$(arg spawn_point)'/>
@@ -65,6 +74,24 @@
     <arg name='use_ground_truth_detections' value='$(arg use_ground_truth_detections)'/>
     <arg name='use_manual_control' value='$(arg use_manual_control)'/>
   </include>
+ 
+  <!--
+    ###############
+    ## Recording ##
+    ###############
+  -->
+  <node name="recorder_video_front" pkg="image_view" type="video_recorder">
+    <param name="filename" value="/tmp/fuzzerdata/$(arg filename)front.avi"/>
+    <param name="fps" value="30"/>
+    <param name="codec" value="H264"/>
+    <remap from="image" to="/carla/ego_vehicle/rgb_view/image"/>
+  </node>
+  <node name="recorder_video_rear" pkg="image_view" type="video_recorder">
+    <param name="filename" value="/tmp/fuzzerdata/$(arg filename)rear.avi"/>
+    <param name="fps" value="30"/>
+    <param name="codec" value="H264"/>
+    <remap from="image" to="/carla/ego_vehicle/rgb_rear/image"/>
+  </node>
 
   <!--
     ###################
@@ -73,5 +100,10 @@
   -->
   <arg name='rvizconfig' default='$(find carla_autoware_agent)/$(arg agent)/rviz/config.rviz'/>
   <node name='rviz' pkg='rviz' type='rviz' args='-d $(arg rvizconfig)'/>
+
+
+ 
+
+
 
 </launch>

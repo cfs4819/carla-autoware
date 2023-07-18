@@ -33,7 +33,7 @@
     ## ROSBAG ##
     ############
   -->
-  <node name="recorder_bag" pkg="rosbag" type="record" args="-a -b 0 -x '/carla/ego_vehicle/rgb_*' --lz4 -O /tmp/fuzzerdata/$(arg filename)bagfile.lz4" />
+  <node name="recorder_bag" pkg="rosbag" type="record" args="-a -b 0 -x '/carla/ego_vehicle/rgb_*' --lz4 -O /tmp/fuzzerdata/bagfile.lz4" />
 
   <!--
     ###########################
@@ -81,13 +81,13 @@
     ###############
   -->
   <node name="recorder_video_front" pkg="image_view" type="video_recorder">
-    <param name="filename" value="/tmp/fuzzerdata/$(arg filename)front.avi"/>
+    <param name="filename" value="/tmp/fuzzerdata/front.mp4"/>
     <param name="fps" value="30"/>
     <param name="codec" value="H264"/>
     <remap from="image" to="/carla/ego_vehicle/rgb_view/image"/>
   </node>
   <node name="recorder_video_rear" pkg="image_view" type="video_recorder">
-    <param name="filename" value="/tmp/fuzzerdata/$(arg filename)rear.avi"/>
+    <param name="filename" value="/tmp/fuzzerdata/rear.mp4"/>
     <param name="fps" value="30"/>
     <param name="codec" value="H264"/>
     <remap from="image" to="/carla/ego_vehicle/rgb_rear/image"/>

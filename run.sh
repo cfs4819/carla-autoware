@@ -24,6 +24,6 @@ docker run \
     --net=host \
     --entrypoint=/bin/bash \
     $RUNTIME \
-    carla-autoware:v20230704-bloody  \
+    carla-autoware:improved  \
     # Town05 '-20.17801284790039,-94.92411804199219,2.299999952316284,0.0,0.0,179.9136962890625'
 

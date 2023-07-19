@@ -92,6 +92,12 @@
     <param name="codec" value="H264"/>
     <remap from="image" to="/carla/ego_vehicle/rgb_rear/image"/>
   </node>
+  <node name="recorder_video_top" pkg="image_view" type="video_recorder">
+    <param name="filename" value="/tmp/fuzzerdata/top.mp4"/>
+    <param name="fps" value="30"/>
+    <param name="codec" value="H264"/>
+    <remap from="image" to="/carla/ego_vehicle/rgb_top/image"/>
+  </node>
 
   <!--
     ###################

@@ -38,7 +38,7 @@
     <include file='$(find op_global_planner)/launch/op_global_planner.launch'>
       <arg name='pathDensity' value='0.75' /> 
       <arg name='enableSmoothing' value='true' /> 
-      <arg name='enableLaneChange' value='true' />
+      <arg name='enableLaneChange' value='false' />
       <arg name='enableRvizInput' value='true' />
       <arg name='enableReplan' value='true' />
       <arg name='velocitySource' value='1' />

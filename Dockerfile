@@ -119,6 +119,7 @@ USER root
 CMD ["/bin/bash"]
 
 COPY --chown=autoware ./entrypoint.sh /tmp
+COPY --chown=autoware ./pub_initialpose.py /tmp
 USER autoware
 ENTRYPOINT ["/tmp/entrypoint.sh"]
 

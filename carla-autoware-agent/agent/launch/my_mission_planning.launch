@@ -54,7 +54,7 @@
   -->
   <node pkg='rostopic' type='rostopic' name='config_waypoint_replanner_topic'
         args='pub -l /config/waypoint_replanner autoware_config_msgs/ConfigWaypointReplanner
-        "{ replanning_mode: true, use_decision_maker: true, velocity_max: 30.0,
+         "{ replanning_mode: true, use_decision_maker: true, velocity_max: 20.0,
            velocity_min: 0.0, accel_limit: 3.00, decel_limit: 3.00, radius_thresh: 20.0, radius_min: 0.0,
            resample_mode: true, resample_interval: 1.0, velocity_offset: 4, end_point_offset: 0,
            braking_distance: 0, replan_curve_mode: true, replan_endpoint_mode: false, overwrite_vmax_mode: false,

@@ -29,6 +29,8 @@
     Out: /safety_waypoints [autoware_msgs::Lane]
   -->
   <include file='$(find waypoint_planner)/launch/astar_avoid.launch'>
+    <arg name='enable_avoidance' value='true' />
+    <arg name='search_waypoints_delta' value='5' />
   </include>
 
   <!--

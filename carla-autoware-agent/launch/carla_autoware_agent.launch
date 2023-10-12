@@ -29,13 +29,6 @@
   <arg name="filename" default=""/>
 
   <!--
-    ############
-    ## ROSBAG ##
-    ############
-  -->
-  <node name="recorder_bag" pkg="rosbag" type="record" args="-a -b 0 -x '/carla/ego_vehicle/rgb_*' --lz4 -O /tmp/fuzzerdata/bagfile.lz4" />
-
-  <!--
     ###########################
     ## CARLA Autoware bridge ##
     ###########################
@@ -74,31 +67,6 @@
     <arg name='use_ground_truth_detections' value='$(arg use_ground_truth_detections)'/>
     <arg name='use_manual_control' value='$(arg use_manual_control)'/>
   </include>
- 
-  <!--
-    ###############
-    ## Recording ##
-    ###############
-  -->
-  <!-- We don't need it in TMFuzz -->
-  <!-- <node name="recorder_video_front" pkg="image_view" type="video_recorder">
-    <param name="filename" value="/tmp/fuzzerdata/front.mp4"/>
-    <param name="fps" value="30"/>
-    <param name="codec" value="H264"/>
-    <remap from="image" to="/carla/ego_vehicle/rgb_view/image"/>
-  </node>
-  <node name="recorder_video_rear" pkg="image_view" type="video_recorder">
-    <param name="filename" value="/tmp/fuzzerdata/rear.mp4"/>
-    <param name="fps" value="30"/>
-    <param name="codec" value="H264"/>
-    <remap from="image" to="/carla/ego_vehicle/rgb_rear/image"/>
-  </node>
-  <node name="recorder_video_top" pkg="image_view" type="video_recorder">
-    <param name="filename" value="/tmp/fuzzerdata/top.mp4"/>
-    <param name="fps" value="30"/>
-    <param name="codec" value="H264"/>
-    <remap from="image" to="/carla/ego_vehicle/rgb_top/image"/>
-  </node> -->
 
   <!--
     ###################
@@ -107,10 +75,5 @@
   -->
   <arg name='rvizconfig' default='$(find carla_autoware_agent)/$(arg agent)/rviz/config.rviz'/>
   <node name='rviz' pkg='rviz' type='rviz' args='-d $(arg rvizconfig)'/>
-
-
- 
-
-
 
 </launch>
